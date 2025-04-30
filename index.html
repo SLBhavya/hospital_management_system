@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+ 
+    <header>
+        <h1 class="main-heading">Hospital Management System</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li class="dropdown-container">
+                <a href="doctors.html" class="doctors-link">Specialists</a>
+                <ul class="dropdown">
+                    <li style="color: black;"><a href="neuro.html">Neurology</a></li>
+                    <li style="color: black;"><a href="gyno.html">Gynecology</a></li>
+                    <li style="color: black;"><a href="pedia.html">Pediatrics</a></li>
+                    <li style="color: black;"><a href="ono.html">Orthopedics</a></li>
+                </ul>
+            </li>
+            <li><a href="appointments.html"> About Appointments</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li>
+                <div class="login-box">
+                    <a href="login.html" class="login-btn"> User</a>
+                    
+
+                </div>
+                <div class="login-box">
+                
+                    <a style="margin-left:40px;" href="login_admin.html" class="login-btn">Admin</a>
+
+                </div>
+               
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- Hospital Video Section -->
+    <section class="hospital-video">
+        <h1>Welcome to Our Hospital</h1>
+        <iframe width="100%" height="600" src="https://www.youtube.com/embed/AKa2ABRRgPs?autoplay=1&mute=1&loop=1&playlist=AKa2ABRRgPs" 
+                title="Hospital Introduction Video" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+    </section>
+    <div class="founder-container">
+        <div class="founder-image">
+          <img src="founder.jpg" alt="Dr. Anil Rajeshwar">
+        </div>
+        <div class="founder-info">
+          <h2>Dr. Anil Rajeshwar</h2>
+          <h3>Founder & Dean, Sunshine Medical Institute</h3>
+          <p><strong>Specializations:</strong> Cardiothoracic Surgery, Healthcare Management, Medical Research in Cardiology</p>
+          <p><strong>Achievements:</strong></p>
+          <ul>
+            <li>Padma Shri Award Recipient for excellence in healthcare and services to the nation.</li>
+            <li>Published over 100 research papers in international medical journals.</li>
+            <li>Developed the revolutionary “Rajeshwar Technique” for minimally invasive heart surgery, reducing recovery time by 30%.</li>
+            <li>Established Sunshine Medical Institute, now recognized as one of the leading cardiac care centers in India.</li>
+            <li>Pioneer in telemedicine and digital healthcare solutions, extending cardiac care to remote areas.</li>
+          </ul>
+          <p><strong>Experience:</strong></p>
+          <ul>
+            <li>30+ years of experience in cardiothoracic surgery, with over 10,000 successful surgeries.</li>
+            <li>Medical Advisor to the Indian Ministry of Health for over a decade.</li>
+            <li>Former Head of Cardiothoracic Surgery at AIIMS, New Delhi.</li>
+            <li>Guest Lecturer at global medical conferences and leading universities, including Harvard Medical School.</li>
+          </ul>
+          <p><strong>About Dr. Anil Rajeshwar:</strong></p>
+          <p>Dr. Rajeshwar is an acclaimed cardiothoracic surgeon whose passion for innovation in healthcare has transformed the landscape of heart surgery in India. After obtaining his medical degree from AIIMS, New Delhi, he pursued specialized training in cardiothoracic surgery at the prestigious Johns Hopkins University in the USA. His vision to make advanced cardiac care affordable and accessible led to the founding of Sunshine Medical Institute.</p>
+          <p>Under his leadership, the hospital has grown into a state-of-the-art facility providing world-class healthcare. Known for his patient-centric approach, Dr. Rajeshwar advocates for the integration of technology and medicine, pioneering telemedicine services and digital consultations, particularly benefiting patients in rural regions.</p>
+          <p>With a deep commitment to healthcare reform and innovation, Dr. Rajeshwar continues to inspire the next generation of doctors through mentorship, research, and global collaborations.</p>
+        </div>
+      </div>
+      <div class="map-container"></div>
+        <h2>Find Us Here</h2>
+        <div class="google-map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.2107300245874!2d-122.41941668468291!3d37.77492917975896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064af5f7f33%3A0x5db56e87f741db9d!2sSan%20Francisco%20General%20Hospital!5e0!3m2!1sen!2sus!4v1600646743784!5m2!1sen!2sus"
+                width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+            </iframe>
+        </div>
+    </div>
+
+    <section class="services">
+        <h2>Our Services</h2>
+        <ul>
+            <li>24/7 Emergency Care</li>
+            <li>Outpatient Services</li>
+            <li>Inpatient Services</li>
+            <li>Surgical Procedures</li>
+            <li>Diagnostic Imaging</li>
+            <li>Rehabilitation Services</li>
+        </ul>
+    </section>
+    <section class="testimonials"></section>
+        <h2>What Our Patients Say</h2>
+        <blockquote>
+            <div class="testimonial-image">
+                <img src="customer1.jpeg" alt="Jane Doe">
+              </div>
+            <p>"The staff was incredibly caring and made my stay comfortable!"</p>
+            <cite>- Jane Doe</cite>
+        </blockquote>
+        <blockquote>
+            <div class="testimonial-image">
+                <img src="customer_2.jpeg" alt="John Smith">
+              </div>
+            <p>"I received excellent treatment and support during my recovery."</p>
+            <cite>- John Smith</cite>
+        </blockquote>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section contact-info">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Health Avenue, Hyderabad</li>
+                    <li><i class="fas fa-envelope"></i> info@sunshinemedical.com</li>
+                    <li><i class="fas fa-phone"></i> +91 40 1234 5678</li>
+                </ul>
+            </div>
+    
+            <div class="footer-section doctors-info">
+                <h4>Doctors Contact</h4>
+                <ul>
+                    <li><i class="fas fa-user-md"></i> Dr. Anil Rajeshwar: +91 9876 543210</li>
+                    <li><i class="fas fa-user-md"></i> Dr. Kavita Shetty: +91 9876 543211</li>
+                </ul>
+            </div>
+    
+            <div class="footer-section support-info">
+                <h4>Support & Emergency</h4>
+                <ul>
+                    <li><i class="fas fa-ambulance"></i> Emergency Hotline: +91 40 5678 9101</li>
+                    <li><i class="fas fa-clinic-medical"></i> Critical Care Unit: +91 40 5678 9103</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Hospital Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

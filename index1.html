@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Hospital Admin</title>
+    <link rel="stylesheet" href="index_styles.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-hospital-user"></i> Admin Panel</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="active"><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="doctor-management.html"><i class="fas fa-user-md"></i> Doctor Management</a></li>
+            <li><a href="patient-management.html"><i class="fas fa-procedures"></i> Patient Management</a></li>
+            <li><a href="appointment-management.html"><i class="fas fa-calendar-check"></i> Appointment Management</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Dashboard</h1>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <i class="fas fa-user-md"></i>
+                <div>
+                    <h3>Doctors</h3>
+                    <p id="doctorCount">0</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-procedures"></i>
+                <div>
+                    <h3>Patients</h3>
+                    <p id="patientCount">0</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-calendar-check"></i>
+                <div>
+                    <h3>Appointments</h3>
+                    <p id="appointmentCount">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard Image -->
+        <div class="dashboard-image">
+            <img src="admin_dashboard.jpg" alt="Admin Dashboard Image">
+        </div>
+    </div>
+
+    <script src="index_script.js"></script>
+</body>
+</html>

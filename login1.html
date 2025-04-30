@@ -1,0 +1,56 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Signup Form</title> 
+<style> body { font-family: Arial, sans-serif; background-color: #e5e5f0; margin: 0; padding: 20px; 
+} form { 
+max-width: 400px; margin: 0 auto; background-color: #daecec; padding: 20px; border-radius: 10px; 
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+} 
+input[type="submit"]:hover { background-color: #6ca1d6; 
+} 
+.login_container{
+    align-items: center;
+    justify-content: center;
+    margin-top:100px;
+    align:center;
+}
+input[type="submit"] {
+    background-color: #89cfdb;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.sign-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    background-color: #89cfdb;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  .signup-link:hover {
+    background-color: #95b7db;
+  }
+</style> 
+</head> 
+<body> 
+<div class="login_container">
+<form action="home.html" method="post"> 
+<h2 > Login </h2> 
+<input type="email" name="email" placeholder="Email" required> <br>
+<input type="password" name="password" placeholder="Password" required> <br>
+<input type="submit" value="Login"> 
+
+</div>
+</form> 
+<a href="signup.html" class="signup-link">Not have an account? Sign Up here</a>
+</body> 
+</html>

@@ -1,0 +1,171 @@
+body { 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+header {
+    background-color: #8eeaf8;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+section {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+h2 {
+    color: #333;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+blockquote {
+    border-left: 4px solid #007BFF;
+    margin: 20px 0;
+    padding-left: 10px;
+    font-style: italic;
+}
+.navbar {
+    background-color: #cfc6c6;
+    overflow: hidden;
+}
+/* Basic styles for the navbar */
+.navbar ul {
+    list-style: none;
+    padding: 20px;
+}
+
+.navbar ul li {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #7c0a0a;
+    padding: 10px;
+}
+
+/* Dropdown styles */
+.dropdown {
+    display: none; /* Hide dropdown by default */
+    position: absolute;
+    background-color: #20b044;
+    border: 1px solid #5dbc62;
+    z-index: 100;
+    min-width: 10px; /* Set a minimum width for dropdown items */
+}
+
+.navbar li:hover .dropdown {
+    display: block; /* Show dropdown on hover */
+}
+
+.dropdown li {
+    width: 100%; /* Set width for dropdown items */
+}
+
+.dropdown li a {
+    display: block;
+    padding: 10px;
+    color: #333;
+}
+
+.dropdown li a:hover {
+    background-color: #f0f0f0; /* Change background on hover */
+}
+
+/* Add hover effect to the Doctors link */
+.doctors-link:hover {
+    background-color: #e0e0e0; /* Change background color on hover */
+}
+
+
+.hospital-video {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Sends the video to the back */
+}
+
+.login-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8eeaf8; /* Button color */
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 2px; /* Smaller rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.login-btn:hover {
+    background-color: #7cd9f0; /* Darker shade on hover */
+}
+
+/* About Us Section */
+.about {
+    padding: 50px 20px;
+    background-color: #0e0f0f; /* Semi-transparent background */
+    margin: 20px;
+}
+
+.about p {
+    text-align: center;
+    font-size: 18px;
+}
+
+/* Doctors Section */
+.doctors {
+    padding: 50px 20px;
+    background-color:  #090909;
+    margin: 20px;
+}
+
+/* Appointments Section */
+.appointments {
+    padding: 50px 20px;
+    background-color: #0d0d0d;
+    margin: 20px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color:  #89cfdb;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content p {
+    margin: 5px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+  
+    .navbar ul li {
+        margin-bottom: 10px;
+    }
+}

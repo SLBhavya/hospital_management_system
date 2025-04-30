@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Management</title>
+    <link rel="stylesheet" href="appointment-management.css">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: url("admin_background.jpeg"); /* Ensure this image is optimized */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 800px;
+            width: 90%;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease forwards;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="time"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+
+        /* Button Styling */
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            transform: scale(1.02);
+        }
+
+        /* Keyframes for Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Appointment Management</h1>
+
+        <!-- Form to Add New Appointment -->
+        <form id="appointmentForm">
+            <div class="form-group">
+                <label for="patientName">Patient Name</label>
+                <input type="text" id="patientName" required>
+            </div>
+            <div class="form-group">
+                <label for="doctorId">Doctor ID</label>
+                <input type="text" id="doctorId" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Appointment Date</label>
+                <input type="date" id="date" required>
+            </div>
+            <div class="form-group">
+                <label for="time">Appointment Time</label>
+                <input type="time" id="time" required>
+            </div>
+            <button type="submit">Add Appointment</button>
+        </form>
+
+        <!-- Appointment List -->
+        <h2>Appointment List</h2>
+        <table id="appointmentTable">
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Doctor ID</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John Doe</td>
+                    <td>DOC123</td>
+                    <td>2024-10-10</td>
+                    <td>09:30</td>
+                    <td><button class="remove-button">Remove</button></td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>DOC456</td>
+                    <td>2024-10-11</td>
+                    <td>10:00</td>
+                    <td><button class="remove-button">Remove</button></td>
+                </tr>
+                <tr>
+                    <td>Mark Johnson</td>
+                    <td>DOC789</td>
+                    <td>2024-10-12</td>
+                    <td>11:15</td>
+                    <td><button class="remove-button">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get input values
+            const patientName = document.getElementById('patientName').value;
+            const doctorId = document.getElementById('doctorId').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            // Add new appointment to the table
+            const table = document.getElementById('appointmentTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            newRow.innerHTML = `
+                <td>${patientName}</td>
+                <td>${doctorId}</td>
+                <td>${date}</td>
+                <td>${time}</td>
+                <td><button class="remove-button">Remove</button></td>
+            `;
+
+            // Clear form inputs
+            document.getElementById('appointmentForm').reset();
+        });
+
+        // Handle remove button click
+        document.getElementById('appointmentTable').addEventListener('click', function(event) {
+            if (event.target.classList.contains('remove-button')) {
+                const row = event.target.closest('tr');
+                row.parentNode.removeChild(row);
+            }
+        });
+    </script>
+</body>
+</html>

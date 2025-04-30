@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Records - Hospital Management</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('userpagepic.webp'); /* Ensure this image has a subtle pattern */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Overlay to make the background image less distracting */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            width: 90%;
+            padding: 30px 40px;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            animation: fadeIn 1s ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2em;
+            position: relative;
+        }
+
+        /* Decorative underline */
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #007bff;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .records-section, .new-record-form {
+            margin-bottom: 30px;
+        }
+
+        .records-section h3, .new-record-form h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            position: relative;
+        }
+
+        /* Decorative underline for subheadings */
+        .records-section h3::after, .new-record-form h3::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: #007bff;
+            margin: 5px auto 0;
+            border-radius: 2px;
+        }
+
+        .records-list {
+            margin: 20px 0;
+            max-height: 300px;
+            overflow-y: auto;
+            transition: max-height 0.5s ease;
+        }
+
+        .record-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            background-color: #fafafa;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .record-item:hover {
+            background-color: #e9f5ff;
+            transform: translateY(-2px);
+        }
+
+        .record-item p {
+            margin: 0;
+            color: #555;
+            font-size: 1em;
+        }
+
+        .download-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .new-record-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .new-record-form label {
+            margin: 10px 0 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .new-record-form input[type="file"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1em;
+        }
+
+        .new-record-form input[type="file"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+            outline: none;
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            font-size: 1em;
+            align-self: flex-end;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Scrollbar styling */
+        .records-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .records-list::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 4px;
+        }
+
+        .records-list::-webkit-scrollbar-thumb:hover {
+            background-color: #b3b3b3;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 25px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .records-section h3, .new-record-form h3 {
+                font-size: 1.3em;
+            }
+
+            .record-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .download-btn {
+                margin-top: 10px;
+            }
+
+            .submit-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Manage Medical Records</h2>
+
+    <!-- View Medical Records Section -->
+    <div class="records-section">
+        <h3>Existing Medical Records</h3>
+        <div class="records-list" id="recordsList">
+            <!-- Medical records will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Upload New Medical Record Form -->
+    <div class="new-record-form">
+        <h3>Upload New Medical Record</h3>
+        <form id="newRecordForm">
+            <label for="file">Select Medical Record:</label>
+            <input type="file" id="file" name="file" accept=".pdf,.doc,.docx,.jpg,.png" required>
+            <button type="button" class="submit-btn" onclick="uploadRecord()">Upload Record</button>
+        </form>
+    </div>
+</div>
+
+<script>
+// Sample data for existing medical records (in a real app, fetch from the server)
+let medicalRecords = [
+    { id: 1, name: 'Blood Test Report.pdf', url: 'records/blood-test-report.pdf' },
+    { id: 2, name: 'MRI Scan.jpg', url: 'records/mri-scan.jpg' }
+];
+
+// Function to render medical records on the page
+function renderRecords() {
+    const recordsList = document.getElementById('recordsList');
+    recordsList.innerHTML = '';
+
+    if (medicalRecords.length === 0) {
+        recordsList.innerHTML = '<p>No medical records available.</p>';
+        return;
+    }
+
+    medicalRecords.forEach((record) => {
+        const recordItem = document.createElement('div');
+        recordItem.className = 'record-item';
+        recordItem.innerHTML = `
+            <p><strong>${record.name}</strong></p>
+            <a href="${record.url}" download>
+                <button class="download-btn">Download</button>
+            </a>
+        `;
+        recordsList.appendChild(recordItem);
+    });
+}
+
+// Function to upload a new medical record
+function uploadRecord() {
+    const fileInput = document.getElementById('file');
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert('Please select a file to upload.');
+        return;
+    }
+
+    // Validate file type
+    const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'image/jpeg', 'image/png'];
+    if (!allowedTypes.includes(file.type)) {
+        alert('Invalid file type. Please select a PDF, Word document, JPG, or PNG file.');
+        return;
+    }
+
+    // Simulate file upload by adding to medicalRecords array
+    const newRecord = {
+        id: medicalRecords.length ? medicalRecords[medicalRecords.length - 1].id + 1 : 1,
+        name: file.name,
+        url: URL.createObjectURL(file) // In real implementation, this would be a server URL after upload
+    };
+
+    medicalRecords.push(newRecord);
+    renderRecords();
+    alert('Medical record uploaded successfully.');
+    document.getElementById('newRecordForm').reset();
+}
+
+// Initial render of medical records
+document.addEventListener('DOMContentLoaded', renderRecords);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing - Hospital Management</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('userpagepic.webp'); /* Ensure this image has a subtle pattern */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Overlay to make the background image less distracting */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            width: 90%;
+            padding: 30px 40px;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            animation: fadeIn 1s ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2em;
+            position: relative;
+        }
+
+        /* Decorative underline */
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #007bff;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .billing-section, .pay-form {
+            margin-bottom: 30px;
+        }
+
+        .billing-section h3, .pay-form h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            position: relative;
+        }
+
+        /* Decorative underline for subheadings */
+        .billing-section h3::after, .pay-form h3::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: #007bff;
+            margin: 5px auto 0;
+            border-radius: 2px;
+        }
+
+        .billing-list {
+            margin: 20px 0;
+            max-height: 300px;
+            overflow-y: auto;
+            transition: max-height 0.5s ease;
+        }
+
+        .bill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            background-color: #fafafa;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .bill-item:hover {
+            background-color: #e9f5ff;
+            transform: translateY(-2px);
+        }
+
+        .bill-item p {
+            margin: 0;
+            color: #555;
+            font-size: 1em;
+        }
+
+        .bill-item p strong {
+            color: #333;
+        }
+
+        .download-btn, .pay-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-left: 10px;
+        }
+
+        .download-btn:hover, .pay-btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .pay-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pay-form label {
+            margin: 10px 0 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .pay-form input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1em;
+        }
+
+        .pay-form input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+            outline: none;
+        }
+
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            font-size: 1em;
+            align-self: flex-end;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        /* Scrollbar styling */
+        .billing-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .billing-list::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 4px;
+        }
+
+        .billing-list::-webkit-scrollbar-thumb:hover {
+            background-color: #b3b3b3;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 25px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .billing-section h3, .pay-form h3 {
+                font-size: 1.3em;
+            }
+
+            .bill-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .download-btn, .pay-btn {
+                margin: 10px 0 0 0;
+            }
+
+            .submit-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Billing Information</h2>
+
+    <!-- View Bills Section -->
+    <div class="billing-section">
+        <h3>Past Bills</h3>
+        <div class="billing-list" id="billingList">
+            <!-- Billing records will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Pay Bill Form -->
+    <div class="pay-form">
+        <h3>Pay Bill</h3>
+        <form id="payBillForm">
+            <label for="amount">Amount to Pay:</label>
+            <input type="number" id="amount" name="amount" min="1" required>
+
+            <button type="button" class="submit-btn" onclick="payBill()">Pay Bill</button>
+        </form>
+    </div>
+</div>
+
+<script>
+// Sample data for past bills (in a real app, fetch from the server)
+let billingRecords = [
+    { id: 1, date: '2024-09-01', amount: 150, status: 'Pending', url: 'bills/bill1.pdf' },
+    { id: 2, date: '2024-09-15', amount: 200, status: 'Paid', url: 'bills/bill2.pdf' },
+];
+
+// Function to render billing records on the page
+function renderBilling() {
+    const billingList = document.getElementById('billingList');
+    billingList.innerHTML = '';
+
+    if (billingRecords.length === 0) {
+        billingList.innerHTML = '<p>No billing records available.</p>';
+        return;
+    }
+
+    billingRecords.forEach((bill) => {
+        const billItem = document.createElement('div');
+        billItem.className = 'bill-item';
+        billItem.innerHTML = `
+            <p><strong>${bill.date}</strong>: $${bill.amount} - <strong>${bill.status}</strong></p>
+            <div>
+                <a href="${bill.url}" download>
+                    <button class="download-btn">Download</button>
+                </a>
+                ${bill.status === 'Pending' ? `<button class="pay-btn" onclick="setPaymentAmount(${bill.amount})">Pay</button>` : ''}
+            </div>
+        `;
+        billingList.appendChild(billItem);
+    });
+}
+
+// Function to set the payment amount in the input field
+function setPaymentAmount(amount) {
+    document.getElementById('amount').value = amount;
+}
+
+// Function to simulate paying a bill
+function payBill() {
+    const amount = parseFloat(document.getElementById('amount').value);
+
+    if (isNaN(amount) || amount <= 0) {
+        alert('Please enter a valid amount.');
+        return;
+    }
+
+    // Find the first pending bill that matches the amount
+    const billIndex = billingRecords.findIndex(bill => bill.amount === amount && bill.status === 'Pending');
+
+    if (billIndex !== -1) {
+        // Update the bill status to Paid
+        billingRecords[billIndex].status = 'Paid';
+        alert(`Payment successful for $${amount}.`);
+    } else {
+        alert('No pending bill found for this amount.');
+    }
+
+    renderBilling();  // Refresh the billing records display
+    document.getElementById('payBillForm').reset();  // Clear the input
+}
+
+// Initial render of billing records
+document.addEventListener('DOMContentLoaded', renderBilling);
+</script>
+
+</body>
+</html>

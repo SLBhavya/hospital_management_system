@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Hospital Management</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    background-image: url('userpagepic.webp'); /* Replace with your hospital management image */
+    background-size: cover;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    border-radius: 20px;
+    backdrop-filter: blur(20px); /* Smoother background blur */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: scale(1.03); /* Slight hover effect to the container */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+h2 {
+    text-align: center;
+    color: #007bff;
+    font-size: 2.8em; /* Increased font size */
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+}
+
+.modules {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px; /* More space between modules */
+    flex-wrap: wrap;
+}
+
+.module {
+    flex: 1;
+    min-width: 220px;
+    padding: 25px;
+    background: linear-gradient(145deg, #fefefe, #e9e9e9); /* Soft gradient background */
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s, box-shadow 0.4s;
+    z-index: 1;
+}
+
+.module:before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150%;
+    height: 150%;
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.2), transparent);
+    z-index: 0;
+    transition: all 0.3s ease;
+}
+
+.module:hover:before {
+    top: 0;
+    left: 0;
+}
+
+.module:hover {
+    transform: translateY(-10px) rotate(1deg); /* Add slight rotation */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.module h3 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #007bff;
+    z-index: 1;
+    position: relative;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+}
+
+.module p {
+    margin-bottom: 25px;
+    font-size: 1.2em;
+    color: #666;
+    z-index: 1;
+    position: relative;
+}
+
+.module button {
+    padding: 14px 30px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    z-index: 1;
+    position: relative;
+}
+
+.module button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4); /* Glow effect on hover */
+}
+
+.profile-info, .edit-form, .appointments, .records, .billing {
+    display: none;
+    margin-top: 25px;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.visible {
+    display: block;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+li {
+    padding: 8px 0;
+    font-size: 1.1em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .modules {
+        flex-direction: column;
+    }
+
+    .module {
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 2.2em;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>User Dashboard</h2>
+   
+    <div class="modules">
+        <div class="module">
+            <h3>Profile Management</h3>
+            <p>View or edit your personal information.</p>
+            <a href="profilemangement.html"><button>View Profile</button></a>
+        </div>
+        <div class="module">
+            <h3>Appoinment Management</h3>
+            <p>View or edit your Appointments.</p>
+            <!-- Directly linking to the profile management page -->
+            <a href="userappointment.html"><button>View Appoinment</button></a>
+        </div>
+        <div class="module">
+            <h3>Medical Records</h3>
+            <p>Access your medical records and history.</p>
+            <a href="medicalRecords.html"><button>Medical Records</button></a></li>
+        </div>
+
+        <div class="module">
+            <h3>Billing</h3>
+            <p>View your invoices and pay your bills.</p>
+            <a href="billing.html"><button>Billing</button></a>
+        </div>
+    </div>
+
+    <!-- Profile Info Module -->
+    <div id="profile-info" class="profile-info">
+        <h3>Profile Information</h3>
+        <ul>
+            <li><a href="profilemangement.html">User Profile</a></li>
+        </ul>
+    </div>
+
+    <!-- Appointments Module -->
+    <div id="appointments" class="appointments">
+        <h3>Appointments</h3>
+        <ul>
+            <li><a href="userappointment.html">Appointments</a></li>
+        </ul>
+    </div>
+
+    <!-- Medical Records Module -->
+    <div id="records" class="records">
+        <h3>Medical Records</h3>
+        <ul>
+            <li><a href="medicalRecords.html">Medical Records</a></li>
+        </ul>
+    </div>
+
+    <!-- Billing Module -->
+    <div id="billing" class="billing">
+        <h3>Medi Claim</h3>
+        <ul>
+            <li><a href="billing.html"> Claim</a></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleModule(moduleId) {
+        const sections = ['profile-info', 'appointments', 'records', 'billing'];
+        sections.forEach(section => {
+            document.getElementById(section).classList.remove('visible');
+        });
+        document.getElementById(moduleId).classList.add('visible');
+    }
+</script>
+</body>
+</html>

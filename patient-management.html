@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Management</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Internal CSS -->
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url("admin_background.jpeg"); /* Ensure this image is optimized */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Overlay for better readability */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+
+        /* Container Styling */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Heading Styles */
+        h1, h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #007bff;
+            position: relative;
+            animation: slideIn 1s ease forwards;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #28a745;
+            animation: slideIn 1.2s ease forwards;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .form-group {
+            flex: 1 1 45%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="file"] {
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            font-size: 1em;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus,
+        input[type="file"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+            outline: none;
+        }
+
+        /* Button Styling */
+        button {
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: width 0.3s;
+            z-index: 0;
+        }
+
+        button:hover::before {
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            color: #333;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            transform: scale(1.02);
+        }
+
+        /* Photo Styling */
+        .photo-cell img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .photo-cell img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Remove Button Styling */
+        .remove-button {
+            background-color: #dc3545;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            font-size: 0.9em;
+        }
+
+        .remove-button:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-group {
+                flex: 1 1 100%;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            .photo-cell img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* Keyframes for Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Patient Management</h1>
+
+        <!-- Form to Add New Patient -->
+        <form id="patientForm">
+            <div class="form-group">
+                <label for="patientName"><i class="fas fa-user"></i> Patient Name</label>
+                <input type="text" id="patientName" placeholder="Enter patient name" required>
+            </div>
+            <div class="form-group">
+                <label for="age"><i class="fas fa-calendar-alt"></i> Age</label>
+                <input type="number" id="age" placeholder="Enter age" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="contact"><i class="fas fa-phone"></i> Contact</label>
+                <input type="text" id="contact" placeholder="Enter contact number" required>
+            </div>
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="email" placeholder="Enter email address" required>
+            </div>
+            <div class="form-group">
+                <label for="address"><i class="fas fa-map-marker-alt"></i> Address</label>
+                <input type="text" id="address" placeholder="Enter address" required>
+            </div>
+            <div class="form-group">
+                <label for="photo"><i class="fas fa-camera"></i> Photo</label>
+                <input type="file" id="photo" accept="image/*" required>
+            </div>
+            <button type="submit"><i class="fas fa-plus"></i> Add Patient</button>
+        </form>
+
+        <!-- Patient List Table -->
+        <h2>Patient List</h2>
+        <table id="patientTable">
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="photo-cell"><img src="https://via.placeholder.com/60" alt="Patient Photo"></td>
+                    <td>John Doe</td>
+                    <td>30</td>
+                    <td>(123) 456-7890</td>
+                    <td>john@example.com</td>
+                    <td>123 Main St, Cityville</td>
+                    <td><button class="remove-button">Remove</button></td>
+                </tr>
+                <tr>
+                    <td class="photo-cell"><img src="https://via.placeholder.com/60" alt="Patient Photo"></td>
+                    <td>Jane Smith</td>
+                    <td>25</td>
+                    <td>(987) 654-3210</td>
+                    <td>jane@example.com</td>
+                    <td>456 Elm St, Townsville</td>
+                    <td><button class="remove-button">Remove</button></td>
+                </tr>
+                <tr>
+                    <td class="photo-cell"><img src="https://via.placeholder.com/60" alt="Patient Photo"></td>
+                    <td>Mark Johnson</td>
+                    <td>45</td>
+                    <td>(555) 123-4567</td>
+                    <td>mark@example.com</td>
+                    <td>789 Oak St, Villagetown</td>
+                    <td><button class="remove-button">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('patientForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get input values
+            const patientName = document.getElementById('patientName').value;
+            const age = document.getElementById('age').value;
+            const contact = document.getElementById('contact').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const photoInput = document.getElementById('photo');
+            const photo = URL.createObjectURL(photoInput.files[0]); // Create a URL for the photo
+
+            // Add new patient to the table
+            const table = document.getElementById('patientTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            newRow.innerHTML = `
+                <td class="photo-cell"><img src="${photo}" alt="Patient Photo"></td>
+                <td>${patientName}</td>
+                <td>${age}</td>
+                <td>${contact}</td>
+                <td>${email}</td>
+                <td>${address}</td>
+                <td><button class="remove-button">Remove</button></td>
+            `;
+
+            // Clear form inputs
+            document.getElementById('patientForm').reset();
+        });
+
+        // Handle remove button click
+        document.getElementById('patientTable').addEventListener('click', function(event) {
+            if (event.target.classList.contains('remove-button')) {
+                const row = event.target.closest('tr');
+                row.parentNode.removeChild(row);
+            }
+        });
+    </script>
+</body>
+</html>

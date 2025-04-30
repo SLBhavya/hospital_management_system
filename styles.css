@@ -1,0 +1,559 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('Hospital-Management-System_fix.jpg'); /* Add your background image */
+    background-size: cover;
+    background-position: center;
+    color: #333;
+}
+/* Main Heading Styles */
+.main-heading {
+    text-align: center;
+    font-size: 48px;
+    color:whitesmoke;
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+h1, h2 {
+    text-align: center;
+    color:  #89cfdb;
+}
+
+/* Navbar */
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #89cfdb;
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Unordered list in the navbar */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* List items within the navbar */
+.navbar ul li {
+  position: relative;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Links in the navbar */
+.navbar ul li a {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for main navbar items */
+.navbar ul li a:hover {
+  color: #000;
+}
+
+/* Dropdown container */
+.dropdown-container {
+  position: relative;
+  z-index: 1; /* Ensure it's above other content */
+}
+
+/* Dropdown menu */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f8f8f8;
+  color:#000;
+  display: none; /* Hide the dropdown initially */
+  visibility: hidden; /* Ensure visibility is hidden */
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 999; /* Ensures the dropdown shows on top */
+}
+
+/* Items in the dropdown */
+.dropdown li {
+  margin: 0;
+  color:black;
+}
+
+/* Links in the dropdown */
+.dropdown li a {
+  color: #000;
+  padding: 10px 20px;
+  display: block;
+  text-align: left;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for dropdown links */
+.dropdown li a:hover {
+  background-color: #89cfdb;
+  color: #fff;
+}
+
+/* Show dropdown on hover */
+.dropdown-container:hover .dropdown {
+  display: block;
+  visibility: visible; /* Make it visible on hover */
+}
+
+/* Login button */
+.login-box .login-btn {
+  background-color: #fff;
+  color: #89cfdb;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login-box .login-btn:hover {
+  background-color: #89cfdb;
+  color: #fff;
+}
+
+/* Ensure even distribution of items */
+.navbar ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#000;
+}
+
+
+/* Doctors Section */
+.doctors {
+    padding: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 20px;
+}
+
+.doctor-card {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.doctor-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.doctor-card h3 {
+    margin: 10px 0 5px 0;
+}
+
+.doctor-card p {
+    color: #555;
+}
+
+/* Appointments Section */
+.appointments {
+    padding: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 20px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color:  #89cfdb;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content p {
+    margin: 5px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar ul li {
+        margin-bottom: 10px;
+    }
+}
+/*Founder section*/
+.founder-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .founder-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .founder-image {
+    margin-right: 40px;
+  }
+  
+  .founder-image img {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .founder-image img:hover {
+    transform: rotate(5deg);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .founder-info {
+    max-width: 800px;
+  }
+  
+  .founder-info h2 {
+    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .founder-info h3 {
+    color: #16a085;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  .founder-info p {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  .founder-info ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style: disc;
+  }
+  
+  .founder-info ul li {
+    color: #333;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  
+  .founder-info p strong {
+    color: #16a085;
+  }
+  
+  .founder-container:hover .founder-info h2,
+  .founder-container:hover .founder-info h3 {
+    color: #e74c3c;
+  }
+  
+  .founder-info h2, .founder-info h3 {
+    transition: color 0.3s ease;
+  }
+
+  h2 {
+    color: #2c3e50;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Services Section */
+  .services {
+    padding: 40px;
+    background-color: #89cfdb;
+    color: white;
+    text-align: center;
+  }
+  
+  .services h2 {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    transition: color 0.3s ease;
+  }
+  
+  .services ul li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .services ul li:hover {
+    transform: translateX(10px);
+    color: #e74c3c;
+  }
+  
+  /* Testimonials Section */
+  .testimonials {
+    padding: 40px;
+    background-color: white;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .testimonials h2 {
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    color: #2c3e50;
+    transition: color 0.3s ease;
+  }
+  
+  blockquote {
+    font-size: 1.3em;
+    color: #333;
+    font-style: italic;
+    position: relative;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #f4f4f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  blockquote:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  blockquote::before {
+    content: open-quote;
+    font-size: 3em;
+    color: #e74c3c;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+  }
+  
+  cite {
+    display: block;
+    font-size: 1.1em;
+    margin-top: 10px;
+    color: #16a085;
+    font-weight: bold;
+  }
+  
+  .testimonial-image {
+    margin-top: 20px;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .testimonial-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .testimonial-image:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Hover Effects */
+  .services h2:hover,
+  .testimonials h2:hover {
+    color: #e74c3c;
+  }
+/*login,signup*/
+.login-container, .signup-container {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  margin: 100px auto;
+  text-align: center;
+  animation: slideIn 1s ease-in-out;
+}
+
+.login-container h2, .signup-container h2 {
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+form input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  background-color:#89cfdb;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #4dabbc;
+}
+
+.create-account {
+  margin-top: 20px;
+}
+
+.create-account a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s;
+}
+
+.create-account a:hover {
+  color: #0056b3;
+}
+
+@keyframes slideIn {
+  from {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+/*footer section*/
+/* Footer General Styles */
+.footer {
+  background-color: #2c3e50;
+  padding: 40px 0;
+  color: #fff;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  width: 30%;
+  padding: 10px;
+}
+
+.footer-section h4 {
+  font-size: 1.3em;
+  margin-bottom: 15px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.footer-section ul li i {
+  margin-right: 10px;
+  color: #16a085;
+}
+
+/* Hover & Transition Effects */
+.footer-section ul li:hover {
+  color: #1abc9c;
+  transition: color 0.3s ease;
+}
+
+/* Icons */
+i.fas {
+  color: #ecf0f1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .footer-section {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+}
+
+
+.map-container {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.google-map {
+  width: 100%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+iframe {
+  border-radius: 8px;
+}
+
+
+
